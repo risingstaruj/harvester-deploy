@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
+
 const BackDiv = styled.div`
     background-color: #1E1E1E;
     height: 100vh;
@@ -25,21 +27,33 @@ const HarvestText = styled.div`
     font-family: 'Qwigley';
     font-style: normal;
     font-weight: 400;
-    font-size: 10vw;
+    font-size: 5vw;
     line-height: 125px;
 
 
     letter-spacing: 0.03em;
 
 `
+const YouTubeLogo = styled.div`
+    position: absolute;
+    left: 35vw;
+    top: 15vh;
+    
 
+  
+`
 
 function FirstScr()
 {
     return(
         <BackDiv>
             <HarvestText>Harvest Demo</HarvestText>
-            <FirstContent></FirstContent>
+            <YouTubeLogo>
+            <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
+            </YouTubeLogo>
+            <FirstContent>
+                
+            </FirstContent>
         </BackDiv>
     );
 }
