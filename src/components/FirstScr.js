@@ -43,6 +43,15 @@ const YouTubeLogo = styled.div`
   
 `
 
+const ChannelInput = styled.input`
+    position: absolute;
+    left: 35vw;
+    top: 26vh;
+    height: 48px;
+    width: 30vw;
+    
+`
+
 function FirstScr()
 {
     return(
@@ -51,6 +60,7 @@ function FirstScr()
             <YouTubeLogo>
             <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
             </YouTubeLogo>
+            <ChannelInput></ChannelInput>
             <FirstContent>
                 
             </FirstContent>
