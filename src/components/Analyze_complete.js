@@ -100,7 +100,7 @@ function FirstScr()
 {
     return(
         <BackDiv>
-            <HarvestText>Harvest DashBoard</HarvestText>
+            <HarvestText>Harvester DashBoard</HarvestText>
             <YouTubeLogo>
             <img src={require("../static/image/분석차트Icon.png")} width="100px"></img>
             </YouTubeLogo>

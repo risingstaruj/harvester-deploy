@@ -76,7 +76,7 @@ function FirstScr()
 {
     return(
         <BackDiv>
-            <HarvestText>Harvest DashBoard</HarvestText>
+            <HarvestText>Harvester DashBoard</HarvestText>
             <YouTubeLogo>
             <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
             </YouTubeLogo>
