@@ -12,7 +12,7 @@ const BackDiv = styled.div`
 
 const FirstContent = styled.div`
     position: absolute;
-    background-color: #E3E3E3;
+    background-color: #4B4959;
     left: 25vw;
     top: 37vh;
     width: 60vw;
@@ -36,8 +36,8 @@ const HarvestText = styled.div`
 `
 const YouTubeLogo = styled.div`
     position: absolute;
-    left: 40vw;
-    top: 15vh;
+    left: 50vw;
+    top: 13vh;
     
 
   
@@ -78,10 +78,10 @@ function FirstScr()
         <BackDiv>
             <HarvestText>Harvest DashBoard</HarvestText>
             <YouTubeLogo>
-            <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
+            <img src={require("../static/image/분석차트Icon.png")} width="100px"></img>
             </YouTubeLogo>
             <ChannelInput></ChannelInput>
-            <SearchButton>검색</SearchButton>
+            <SearchButton>입력</SearchButton>
             <FirstContent>
                 <AvatarDiv>
                 <img src={require("../static/image/Avatar.png")} width="300px"></img>
