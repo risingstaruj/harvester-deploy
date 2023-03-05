@@ -10,15 +10,19 @@ const BarDiv = styled.div`
     
 `
 
-const ChartsImg = styled.image`
+const ChartsImg = styled.div`
     position: absolute;
-    
+    top: 36px;
+    left: 25px;
 `
 function Sidebar()
 {  
     return(
         <BarDiv>
-            
+            <ChartsImg>
+                <img src={require("../static/image/Frame.png")}>
+                    </img>
+                </ChartsImg>
         </BarDiv>
     );   
 

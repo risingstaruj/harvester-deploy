@@ -14,7 +14,7 @@ const FirstContent = styled.div`
     position: absolute;
     background-color: #E3E3E3;
     left: 25vw;
-    top: 276px;
+    top: 37vh;
     width: 60vw;
     height: 56vh;
 
@@ -36,7 +36,7 @@ const HarvestText = styled.div`
 `
 const YouTubeLogo = styled.div`
     position: absolute;
-    left: 35vw;
+    left: 40vw;
     top: 15vh;
     
 
@@ -48,21 +48,44 @@ const ChannelInput = styled.input`
     left: 35vw;
     top: 26vh;
     height: 48px;
-    width: 30vw;
+    width: 33vw;
     
+`
+
+const SearchButton = styled.button`
+position: absolute;
+left: 69vw;
+top: 26vh;
+height: 53px;
+width: 100px;
+background-color: #8D1515;
+border: 0px;
+border-radius: 8px;
+color: #ffffff;
+font-size: 18px;
+font-family: 'Open Sans';
+`
+
+const AvatarDiv = styled.div`
+margin-top: 13vh;
+margin-bottom: 13vh;
+
 `
 
 function FirstScr()
 {
     return(
         <BackDiv>
-            <HarvestText>Harvest Demo</HarvestText>
+            <HarvestText>Harvest DashBoard</HarvestText>
             <YouTubeLogo>
             <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
             </YouTubeLogo>
             <ChannelInput></ChannelInput>
+            <SearchButton>검색</SearchButton>
             <FirstContent>
-                
+                <AvatarDiv>
+                <img src={require("../static/image/Avatar.png")} width="300px"></img>
+                </AvatarDiv>
             </FirstContent>
         </BackDiv>
     );
