@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const BarDiv = styled.div`
     background-color: #161717;
     width: 100px;
-    height: 100%; 
+    height: 100vh; 
     position: absolute;
     top: 0px;
     

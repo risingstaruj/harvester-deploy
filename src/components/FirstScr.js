@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import styled from 'styled-components';
-
-
+import styles from './FirstScr.module.css';
+import axios from 'axios';
+import ReactLoading from 'react-loading';
 
 const BackDiv = styled.div`
     background-color: #1E1E1E;
     height: 100vh;
+    width: 100vw;
     
     
 `
@@ -16,9 +18,10 @@ const FirstContent = styled.div`
     left: 25vw;
     top: 37vh;
     width: 60vw;
-    height: 56vh;
+    height: 400px;
 
     border-radius: 17px;
+    overflow: scroll;
 `
 const HarvestText = styled.div`
     position: absolute;
@@ -72,23 +75,166 @@ margin-bottom: 13vh;
 
 `
 
+const ElementDiv = styled.div`
+position: absolute;
+left: 2%;
+top: 2%;
+width: 96.5%;
+height: 60px;
+background-color: #ffffff;
+border-radius: 10px;
+
+`
+
+const LoaderWrap = styled.div`
+width: 100%;
+height: 80%;
+display: flex;
+justify-content: center;
+text-align: center;
+align-items: center;
+`
+
 function FirstScr()
 {
+
+    const [Target, setTarget] = useState("");
+    const [SeResult, setSeResult] = useState([]);
+    const [page, setPage] = useState(1);
+    const targetRef = useRef(null);
+    const [isLoading, setisLoading] = useState(false);
+    const [ChannelId, setChannelId] = useState('');
+    
+    
+
+
+    const handleIntersection = useCallback(async(entries)=> {
+        const entry = entries[0];
+        if(entry.isIntersecting && !isLoading) {
+            setisLoading(true);
+            try {
+                const res = await axios.get("/channel/"+ChannelId+"/"+page+"/6");
+                const newData = await res.data;
+                setSeResult((prev)=>[...prev, ...newData]);
+                setPage((prevPage) => prevPage+1);
+            } catch(err) {
+                console.error(err);
+            } finally {
+                setisLoading(false);
+            }
+        }
+    }, [page, isLoading]);
+    
+    useEffect(() => {
+        const observer = new IntersectionObserver(handleIntersection, {
+            rootMargin: '0px',
+            threshold: 1.0,
+        });
+        if(targetRef.current) {
+            observer.observe(targetRef.current);
+        }
+        return () => {
+            observer.disconnect();
+        };
+    }, [handleIntersection]);
+    
+    
+    
+    
+    const GetContentList = (event) => {
+
+
+
+
+
+    if(ChannelId==='')
+    {
+        window.alert("채널 ID를 입력하여 주십시오.");
+        
+    }
+    else
+    {
+       
+    
+        axios.get("/channel/"+ChannelId+"/1/6")
+    .then((res)=>{
+        
+        setSeResult((prev)=> [...prev, ...res.data]);
+        console.log(SeResult);
+    })  
+      }
+    
+    }
+
+    const ChannelIdChange = event => {
+        setChannelId(event.target.value);
+    };
+
+
+
+
     return(
         <BackDiv>
             <HarvestText>Harvester DashBoard</HarvestText>
             <YouTubeLogo>
             <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
             </YouTubeLogo>
-            <ChannelInput></ChannelInput>
-            <SearchButton>검색</SearchButton>
+            <ChannelInput onChange={ChannelIdChange}></ChannelInput>
+            <SearchButton onClick={(e)=> {GetContentList(e)}}>검색</SearchButton>
             <FirstContent>
-                <AvatarDiv>
-                <img src={require("../static/image/Avatar.png")} width="300px"></img>
+          
+                
+                {
+
+
+/*
+<AvatarDiv>
+                {//<img src={require("../static/image/Avatar.png")} width="300px"></img>
+                }
                 </AvatarDiv>
+
+*/
+                }
+                <div>
+                    
+
+                    
+
+
+
+                    <div>
+                        
+                    {SeResult.map((item, index) => (
+                        <div key={index} className={`${styles.ElementDiv}`}>
+                            <div className={`${styles.ChId}`}>{item.channelId}</div>
+                            <div>{item.commentText}</div>
+                            <div>{item.datePublished}</div>
+                            <div>{item.userName}</div>
+                            
+                            </div>
+                        
+                    ))}
+                    
+                    </div>
+                    
+
+<div ref={targetRef}></div>
+                {isLoading&&<div>Loading...</div>}
+                
+
+
+
+                </div>
+               
+                
+
+
             </FirstContent>
         </BackDiv>
     );
 }
+
+
+
 
 export default FirstScr;

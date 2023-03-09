@@ -1,0 +1,19 @@
+.ElementDiv{
+
+    width: 96.5%;
+height: 60px;
+margin-left: 1vw;
+margin-top: 1vh;
+margin-bottom: 1vh;
+background-color: #ffffff;
+border-radius: 10px;
+}
+
+.ChId {
+    position: absolute;
+    left: 1vw;
+    
+    font-size: 18;
+    
+    
+}
