@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/harvester-deploy/static/css/main.9e846213.css",
-    "main.js": "/harvester-deploy/static/js/main.e1f4bec5.js",
-    "static/js/787.7fb9b966.chunk.js": "/harvester-deploy/static/js/787.7fb9b966.chunk.js",
-    "static/media/분석차트Icon.png": "/harvester-deploy/static/media/분석차트Icon.42e308e7b3405d0f56f2.png",
-    "static/media/Avatar.png": "/harvester-deploy/static/media/Avatar.dc720c2bdd6ef026096f.png",
-    "static/media/logo.svg": "/harvester-deploy/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/harvester-deploy/index.html",
-    "main.9e846213.css.map": "/harvester-deploy/static/css/main.9e846213.css.map",
-    "main.e1f4bec5.js.map": "/harvester-deploy/static/js/main.e1f4bec5.js.map",
-    "787.7fb9b966.chunk.js.map": "/harvester-deploy/static/js/787.7fb9b966.chunk.js.map"
+    "main.css": "/static/css/main.9e846213.css",
+    "main.js": "/static/js/main.84b34725.js",
+    "static/js/787.7fb9b966.chunk.js": "/static/js/787.7fb9b966.chunk.js",
+    "static/media/분석차트Icon.png": "/static/media/분석차트Icon.42e308e7b3405d0f56f2.png",
+    "static/media/Avatar.png": "/static/media/Avatar.dc720c2bdd6ef026096f.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.9e846213.css.map": "/static/css/main.9e846213.css.map",
+    "main.84b34725.js.map": "/static/js/main.84b34725.js.map",
+    "787.7fb9b966.chunk.js.map": "/static/js/787.7fb9b966.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9e846213.css",
-    "static/js/main.e1f4bec5.js"
+    "static/js/main.84b34725.js"
   ]
 }
