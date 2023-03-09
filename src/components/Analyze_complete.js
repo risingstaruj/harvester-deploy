@@ -16,7 +16,7 @@ const FirstContent = styled.div`
     left: 20vw;
     top: 25vh;
     width: 60vw;
-    height: 56vh;
+    height: 70vh;
 
     border-radius: 17px;
     z-index: 3000;
@@ -135,6 +135,56 @@ font-weight: 600;
 padding-top: 10px;
 `
 
+const SexHarassCard = styled.div`
+position: absolute;
+left: 3vw;
+top: 40vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+const InsultCard = styled.div`
+position: absolute;
+left: 16vw;
+top: 40vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+const AgeCard = styled.div`
+position: absolute;
+left: 29vw;
+top: 40vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+const RaceCard = styled.div`
+position: absolute;
+left: 42vw;
+top: 40vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+
+
 function Analyze_complete({setModalOpen, Verdict, Comment})
 {
 
@@ -151,26 +201,65 @@ function Analyze_complete({setModalOpen, Verdict, Comment})
                <button className={styles.close} onClick={closeModal}>
                 닫기
             </button>
-               <DisaCard><a>장애인 혐오</a><br /><a>
+               <DisaCard><a>장애인 혐오</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.장애*100).toFixed(0)}</a>
                 
                 
                 
                 
-                {(Verdict.장애*100).toFixed(0)}
-                
-                
-                
-                
-                </a></DisaCard>
+                </DisaCard>
                 <ReliCard>
-
+                <a>종교 혐오</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.종교*100).toFixed(0)}</a>
+                
+                
                 </ReliCard>
                 <PoliCard>
-
+                <a>정치 성향 혐오</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.정치성향*100).toFixed(0)}</a>
+                
+                
                 </PoliCard>
                 <ViolCard>
-
+                <a>직업 혐오</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.직업혐오*100).toFixed(0)}</a>
+                
+                
                 </ViolCard>
+
+                <SexHarassCard>
+                <a>성 혐오</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.성혐오*100).toFixed(0)}</a>
+                
+                
+                </SexHarassCard>
+                <InsultCard>
+                <a>모욕</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.모욕*100).toFixed(0)}</a>
+                
+                
+                </InsultCard>
+                <AgeCard>
+                <a>연령 차별</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.연령*100).toFixed(0)}</a>
+                
+                
+                </AgeCard>
+                <RaceCard>
+
+                <a>외설</a><br />
+                <br />
+                <a className={`${styles.VerdictScore}`}>{(Verdict.외설*100).toFixed(0)}</a>
+                
+                
+                </RaceCard>
             </FirstContent>
       
     );

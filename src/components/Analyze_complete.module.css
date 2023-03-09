@@ -19,3 +19,7 @@
 .close:active{
     transform: translateY(6px);
 }
+
+.VerdictScore{
+    font-size: 50px;
+}
