@@ -47,6 +47,5 @@
   "devDependencies": {
     "json-server": "^0.17.2"
   },
-  "proxy": "http://51.159.67.234:8080/",
-  "homepage": "https://risingstaruj.github.io/harvester-deploy"
+  "homepage": "https://risingstaruj/harvester-deploy"
 }
