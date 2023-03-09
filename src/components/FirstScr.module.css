@@ -1,19 +1,80 @@
 .ElementDiv{
 
     width: 96.5%;
-height: 60px;
+height: 45px;
 margin-left: 1vw;
 margin-top: 1vh;
 margin-bottom: 1vh;
 background-color: #ffffff;
 border-radius: 10px;
+padding-top: 2vh;
+font-size: 12px;
+white-space: nowrap;
+
 }
 
 .ChId {
     position: absolute;
-    left: 1vw;
+    left: 4vw;
     
-    font-size: 18;
+    font-weight: 600;
     
+    width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Comment {
+    position: absolute;
+    left: 14vw;
+    font-weight: 600;
+    width: 18vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}   
+.ChName {
+    position: absolute;
+    left: 34vw;
+    color: #5C5ADE;
+    font-weight: bold;
+
+    width: 7vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.DT {
+    position: absolute;
+    left: 40vw;
+
+
+font-weight: 450;
+
+
+    width: 10vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.AnButton{
+    position: absolute;
+    right: 2.7vw;
+    background-color: #5C5ADE;
+    color: white;
+    border: 0px;
+    border-radius: 10px;
+    height: 4vh;
     
+}
+.AnButton:hover{
+    background-color: mediumslateblue;
+}
+.AnButton:active{
+    transform: translateY(1px);
 }

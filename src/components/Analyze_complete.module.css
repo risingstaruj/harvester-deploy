@@ -1,0 +1,21 @@
+.close{
+    position: absolute;
+    right: 25vw;
+    bottom: 2vh;
+    border: none;
+    background-color: #363447;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 30px;
+    
+}
+.close:hover{
+    color: gray;
+}
+
+.close:active{
+    transform: translateY(6px);
+}

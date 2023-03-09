@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import styles from './FirstScr.module.css';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
+import Analyzecomplete from './Analyze_complete';
 
 const BackDiv = styled.div`
     background-color: #1E1E1E;
     height: 100vh;
     width: 100vw;
+    overflow: fixed;
     
     
 `
@@ -21,7 +23,8 @@ const FirstContent = styled.div`
     height: 400px;
 
     border-radius: 17px;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hide;
 `
 const HarvestText = styled.div`
     position: absolute;
@@ -103,19 +106,24 @@ function FirstScr()
     const [page, setPage] = useState(1);
     const targetRef = useRef(null);
     const [isLoading, setisLoading] = useState(false);
-    const [ChannelId, setChannelId] = useState('');
-    
-    
+    const [ChannelId, setChannelId] = useState('UCEEwN8Cv4h9ff45OirIwWHw');
+    const [modalOpen, setModalOpen] = useState(false);
+    const [Init, setInit] = useState(false);
+    const [VerdictTemp, setVerdictTemp] = useState({});
 
+    const [ModalComment, setModalComment] = useState("");
 
+    
     const handleIntersection = useCallback(async(entries)=> {
         const entry = entries[0];
         if(entry.isIntersecting && !isLoading) {
             setisLoading(true);
             try {
-                const res = await axios.get("/channel/"+ChannelId+"/"+page+"/6");
+                const res = await axios.get("/channel/"+ChannelId+"/"+page+"/50");
                 const newData = await res.data;
+
                 setSeResult((prev)=>[...prev, ...newData]);
+                console.log(SeResult);
                 setPage((prevPage) => prevPage+1);
             } catch(err) {
                 console.error(err);
@@ -127,8 +135,8 @@ function FirstScr()
     
     useEffect(() => {
         const observer = new IntersectionObserver(handleIntersection, {
-            rootMargin: '0px',
-            threshold: 1.0,
+            rootMargin: '-50px',
+            threshold: [0, 0.3, 1],
         });
         if(targetRef.current) {
             observer.observe(targetRef.current);
@@ -139,6 +147,11 @@ function FirstScr()
     }, [handleIntersection]);
     
     
+    const ModalContentsSet = (event) => {
+        setVerdictTemp()
+        setModalOpen(true);
+        
+    }
     
     
     const GetContentList = (event) => {
@@ -155,8 +168,8 @@ function FirstScr()
     else
     {
        
-    
-        axios.get("/channel/"+ChannelId+"/1/6")
+        setSeResult([]);
+        axios.get("/channel/"+ChannelId+"/1/50")
     .then((res)=>{
         
         setSeResult((prev)=> [...prev, ...res.data]);
@@ -179,8 +192,11 @@ function FirstScr()
             <YouTubeLogo>
             <img src={require("../static/image/Youtube-Logo.png")} width="480px"></img>
             </YouTubeLogo>
-            <ChannelInput onChange={ChannelIdChange}></ChannelInput>
+            <ChannelInput onChange={ChannelIdChange} placeholder="Please input Channel URL here" value="UCEEwN8Cv4h9ff45OirIwWHw"></ChannelInput>
             <SearchButton onClick={(e)=> {GetContentList(e)}}>검색</SearchButton>
+            <div>
+                    {modalOpen&&<Analyzecomplete  setModalOpen={setModalOpen} Verdict={VerdictTemp} Comment={ModalComment}/>}
+                </div>
             <FirstContent>
           
                 
@@ -195,6 +211,7 @@ function FirstScr()
 
 */
                 }
+                
                 <div>
                     
 
@@ -206,11 +223,11 @@ function FirstScr()
                         
                     {SeResult.map((item, index) => (
                         <div key={index} className={`${styles.ElementDiv}`}>
-                            <div className={`${styles.ChId}`}>{item.channelId}</div>
-                            <div>{item.commentText}</div>
-                            <div>{item.datePublished}</div>
-                            <div>{item.userName}</div>
-                            
+                            <a className={`${styles.ChId}`}>{item.userName}</a>
+                            <a className={`${styles.Comment}`}>{item.commentText}</a>
+                            <a className={`${styles.ChName}`}>{item.channelId}</a>
+                            <a className={`${styles.DT}`}>{item.datePublished}</a>
+                            <button onClick={() => {setModalComment(item.commentText); setVerdictTemp(item.verdict); setModalOpen(true);}} className={`${styles.AnButton}`}>분석 결과 보기</button>
                             </div>
                         
                     ))}
@@ -219,7 +236,17 @@ function FirstScr()
                     
 
 <div ref={targetRef}></div>
-                {isLoading&&<div>Loading...</div>}
+{
+
+isLoading?(
+    <LoaderWrap>
+        <ReactLoading type="spin" color="#5C5ADE" />
+    </LoaderWrap>
+): ("")
+
+
+
+                }
                 
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
-
+import styles from './Analyze_complete.module.css';
+import {PieChart} from 'react-minimal-pie-chart';
 
 const BackDiv = styled.div`
     background-color: #1E1E1E;
@@ -13,12 +13,13 @@ const BackDiv = styled.div`
 const FirstContent = styled.div`
     position: absolute;
     background-color: #4B4959;
-    left: 25vw;
-    top: 37vh;
+    left: 20vw;
+    top: 25vh;
     width: 60vw;
     height: 56vh;
 
     border-radius: 17px;
+    z-index: 3000;
 `
 const HarvestText = styled.div`
     position: absolute;
@@ -78,40 +79,101 @@ left: 7vw;
 right: 7vw;
 top: 2vh;
 width: 46vw;
-height: 7vh;
+height: 5vh;
 background-color: #363447;
 border-radius: 20px;
 color: #ffffff;
+padding-top: 20px;
 
 `
-const Card = styled.div`
+const DisaCard = styled.div`
 position: absolute;
 left: 3vw;
 top: 13vh;
 width: 11vw;
-height: 20vh;
+height: 18vh;
 background-color: #363447;
 border-radius: 20px;
-
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+const ReliCard = styled.div`
+position: absolute;
+left: 16vw;
+top: 13vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+const PoliCard = styled.div`
+position: absolute;
+left: 29vw;
+top: 13vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
+`
+const ViolCard = styled.div`
+position: absolute;
+left: 42vw;
+top: 13vh;
+width: 11vw;
+height: 18vh;
+background-color: #363447;
+border-radius: 20px;
+color: white;
+font-weight: 600;
+padding-top: 10px;
 `
 
-
-function FirstScr()
+function Analyze_complete({setModalOpen, Verdict, Comment})
 {
+
+    const closeModal = () => {
+        setModalOpen(false);
+    }
+    console.log(Verdict);
+   
+    
     return(
-        <BackDiv>
-            <HarvestText>Harvester DashBoard</HarvestText>
-            <YouTubeLogo>
-            <img src={require("../static/image/분석차트Icon.png")} width="100px"></img>
-            </YouTubeLogo>
-            <ChannelInput></ChannelInput>
-            <SearchButton>입력</SearchButton>
+        
             <FirstContent>
-               <CommentView>(테스트 문구)넌 왜 팔을 그렇게 움직여? 장애인이냐?</CommentView>
-               <Card></Card>
+               <CommentView>{Comment}</CommentView>
+               <button className={styles.close} onClick={closeModal}>
+                닫기
+            </button>
+               <DisaCard><a>장애인 혐오</a><br /><a>
+                
+                
+                
+                
+                {(Verdict.장애*100).toFixed(0)}
+                
+                
+                
+                
+                </a></DisaCard>
+                <ReliCard>
+
+                </ReliCard>
+                <PoliCard>
+
+                </PoliCard>
+                <ViolCard>
+
+                </ViolCard>
             </FirstContent>
-        </BackDiv>
+      
     );
 }
 
-export default FirstScr;
+export default Analyze_complete;
